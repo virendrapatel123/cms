@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="2">
+        <tr>
+            <th>form_id</th>
+            <th>student_name</th>
+            <th>father_name</th>
+            <th>mother_name</th>
+            <th>dob</th>
+            <th>address</th>
+            <th>mobile</th>
+            <th>email</th>
+            <th>course</th>
+            <th>date</th>
+            <th>Action</th>
+        </tr>
+        {%for data in datas%}
+        <tr>
+            <td>{{data[0]}}</td>
+            <td>{{data[1]}}</td>
+            <td>{{data[2]}}</td>
+            <td>{{data[3]}}</td>
+            <td>{{data[4]}}</td>
+            <td>{{data[5]}}</td>
+            <td>{{data[6]}}</td>
+            <td>{{data[7]}}</td>
+            <td>{{data[8]}}</td>
+            <td>{{data[9]}}</td>
+            <td><a href="/delete/{{data[0]}}">del</a></td>
+
+
+            
+        </tr>
+        {% endfor%}
+    </table>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<table border="2">
+    <tr>
+        <th>staff_id</th>
+        <th>first_name</th>
+        <th>last_name</th>
+        <th>father_name</th>
+        <th>mother_name</th>
+        <th>dob</th>
+        <th>address</th>
+        <th>qualification</th>
+        <th>timing</th>
+        <th>course</th>
+        <th>date_of_joining</th>
+        <th>Action</th>
+        
+    </tr>
+    {%for data in datas%}
+    <tr>
+        <td>{{data[0]}}</td>
+        <td>{{data[1]}}</td>
+        <td>{{data[2]}}</td>
+        <td>{{data[3]}}</td>
+        <td>{{data[4]}}</td>
+        <td>{{data[5]}}</td>
+        <th>{{data[6]}}</th>
+        <th>{{data[7]}}</th>
+        <th>{{data[8]}}</th>
+        <th>{{data[9]}}</th>
+        <th>{{data[10]}}</th>
+        <td><a href="/delete/{{data[0]}}">del</a></td>
+        
+        
+        
+    </tr>
+    {% endfor%}
+</table>

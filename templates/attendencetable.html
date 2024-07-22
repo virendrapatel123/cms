@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="2">
+        <tr>
+            <th>AttendanceId</th>
+            <th>AttendeeType</th>
+            <th>Attendee_id</th>
+            <th>Timing_in</th>
+            <th>Timing_out</th>
+            <th>Attendance_date</th>
+            <th>Action</th>
+        </tr>
+        {%for data in datas%}
+        <tr>
+            <td>{{data[0]}}</td>
+            <td>{{data[1]}}</td>
+            <td>{{data[2]}}</td>
+            <td>{{data[3]}}</td>
+            <td>{{data[4]}}</td>
+            <td>{{data[5]}}</td>
+            <td><a href="/delete/{{data[0]}}">del</a></td>
+        </tr>
+        {% endfor%}
+    </table>
+</body>
+</html>
