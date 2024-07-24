@@ -57,10 +57,61 @@ def attendance_add(req):
         return 0
     
 
-
-def attendence_table():
-    with conn.cursor() as cur:
-        sql="select * from attendance"
-        cur.execute(sql)
-        data=cur.fetchall()
+def attendance_update(id):
+   
     
+    
+    attendeeType=request.form.get("attendeeType")
+    attendee_id=int(request.form.get("attendeeId"))
+    type=request.form.get("type")
+    flag=0
+
+    time=datetime.datetime.now()
+
+    with conn.cursor() as cur:
+        if attendeeType == "student":
+            sql="select * from students where student_id=%s"
+            data=(attendee_id)
+            status= cur.execute(sql,data)
+            if status:
+                flag=1
+
+    with conn.cursor() as cur:
+        if attendeeType == "teacher":
+            sql="select * from teachers where teacher_id=%s"
+            data=(attendee_id)
+            status= cur.execute(sql,data)
+            if status:
+                flag=1
+
+    with conn.cursor() as cur:
+        if attendeeType == "staff":
+            sql="select * from staff where staff_id =%s"
+            data=(attendee_id)
+            status= cur.execute(sql,data)
+            if status:
+                flag=1
+
+    if flag==1:
+        if type=="in":
+            with conn.cursor() as cur:
+                sql="""UPDATE  attendance SET attendee_type=%s,attendee_id=%s,timing_in=%s WHERE attendance_id=%s"""
+                values=(attendeeType,attendee_id,time,id)
+                cur.execute(sql,values)
+                conn.commit()
+
+        else:
+            with conn.cursor() as cur:
+                sql="""UPDATE attendance SET attendee_type=%s,attendee_id=%s,timing_out=%s  WHERE attendance_id=%s"""
+                values=(attendeeType,attendee_id,time,id)
+                cur.execute(sql,values)
+                conn.commit()
+        return 1
+
+
+    else:
+        return 0
+    
+
+
+

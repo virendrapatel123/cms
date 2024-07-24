@@ -1,7 +1,7 @@
 from flask import Flask,redirect,render_template,request
 import pymysql
 
-from function.att import attendance_add
+from function.att import attendance_add,attendance_update
 from function.course import course_add
 from function.enquiry import enquiry_add
 from function.guardian import guardian_add
@@ -247,6 +247,27 @@ def  teacherdelete(id):
         cur.execute(sql,values)
         return redirect("/teachertable")
 
+
+@app.route("/update/<id>" ,methods=['GET','POST'])
+def updateattendence(id):
+    if request.method=='GET':
+        with conn.cursor() as cur:
+            sql="select * from attendance where attendance_id=%s"
+            values=(id)
+            cur.execute(sql,values)
+            data=cur.fetchone()
+        return render_template("attendenceupdate.html",datas=data)
+       
+    status=attendance_update(id)
+    if status==1:
+               
+        return redirect("/attendancetable") 
+    
+
+    else:   
+        return "INVALID"
+
+            
 
 
 
