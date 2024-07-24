@@ -57,8 +57,10 @@ def attendance_add(req):
         return 0
     
 
+
 def attendance_update(id):
    
+
     
     
     attendeeType=request.form.get("attendeeType")
