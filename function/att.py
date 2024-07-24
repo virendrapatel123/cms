@@ -58,9 +58,5 @@ def attendance_add(req):
     
 
 
-def attendence_table():
-    with conn.cursor() as cur:
-        sql="select * from attendance"
-        cur.execute(sql)
-        data=cur.fetchall()
+
     
